@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gzl.model.dao.IUserRoleDao">
+    <select id="getUserRoleById" parameterType="java.lang.String" resultType="com.gzl.model.entity.UserRoleEntity">
+        select * from user_role where user_id=${userId}
+    </select>
+</mapper>

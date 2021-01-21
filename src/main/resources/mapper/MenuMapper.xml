@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzl.model.dao.IMenuDao">
+    <select id="getMenuById" parameterType="java.lang.String" resultType="com.gzl.model.entity.MenuEntity">
+        select * from menu where menu_id =${menuId}
+    </select>
+
+    <select id="getMenuByParentId" parameterType="java.lang.String" resultType="com.gzl.model.entity.MenuEntity">
+        select * from menu where parent_id =${parentId}
+    </select>
+
+    <select id="getAllMenu" resultType="com.gzl.model.entity.MenuEntity">
+        select * from menu
+    </select>
+
+    <select id="getMenuBynull" resultType="java.util.Map">
+        select * from menu where parent_id=""
+    </select>
+
+    <select id="getMenuByIdList" parameterType="list" resultType="java.util.Map">
+        select *
+        from menu
+        where parent_id in
+        <foreach item="item" index="index" collection="menuIdList" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="findByPage" resultType="com.gzl.model.entity.MenuEntity">
+        select * from menu LIMIT #{offset},#{size}
+    </select>
+
+
+
+</mapper>
